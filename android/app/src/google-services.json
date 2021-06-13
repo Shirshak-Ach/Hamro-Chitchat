@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "980523075551",
+    "project_id": "hamro-chitchat",
+    "storage_bucket": "hamro-chitchat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980523075551:android:49918a6902ea0e135ce66a",
+        "android_client_info": {
+          "package_name": "com.example.Hamro_Chitchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980523075551-pljualobf55qj2nes4844rlgjlar3ccg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.Hamro_Chitchat",
+            "certificate_hash": "e118b3ddad1992e6b2350a515bceb31550901832"
+          }
+        },
+        {
+          "client_id": "980523075551-niq1k5u11n1nghjffkp24uc6u2i1v5l6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNqd5Tf7cxg8ctq9Ix7xfcQilqGhTkFGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980523075551-niq1k5u11n1nghjffkp24uc6u2i1v5l6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
