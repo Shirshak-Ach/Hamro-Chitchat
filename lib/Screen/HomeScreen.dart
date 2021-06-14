@@ -27,19 +27,27 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void getDataforChat(int index) async {
-    setState(() {
-      isLoading = true;
-    });
-    await _firestore
-        .collection("users")
-        .where("name", isNotEqualTo: _auth.currentUser.displayName)
-        .get()
-        .then((value) {
+  Future<void> getDataforChat(int index) async {
+    if (await _firestore
+            .collection("users")
+            .where("name", isNotEqualTo: _auth.currentUser.displayName)
+            .get() ==
+        null) {
       setState(() {
+        isLoading = true;
+      });
+    } else {
+      await _firestore
+          .collection("users")
+          .where("name", isNotEqualTo: _auth.currentUser.displayName)
+          .get()
+          .then((value) {
         map = value.docs[index].data();
       });
-    });
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   Future getMessagesFuture() async {
@@ -93,12 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 borderOnForeground: true,
                                 color: Colors.white,
                                 child: ListTile(
-                                  onTap: () {
-                                    getDataforChat(index);
+                                  onTap: () async {
+                                    await getDataforChat(index);
                                     String roomId = chatRoomId(
                                         _auth.currentUser.displayName,
                                         map['name']);
-                                    isLoading = false;
+
                                     isLoading
                                         ? CircularProgressIndicator()
                                         : Navigator.push(
