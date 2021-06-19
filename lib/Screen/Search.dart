@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hamro_chitchat/Screen/BottomNavigation.dart';
 import 'package:hamro_chitchat/Screen/Chat.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -74,10 +75,29 @@ class _SearchScreenState extends State<SearchScreen>
     return Scaffold(
         body: isLoading
             ? Center(
-                child: Container(
-                  height: size.height / 20,
-                  width: size.width / 20,
-                  child: CircularProgressIndicator(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircularProgressIndicator(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 20,
+                    ),
+                    Container(
+                      color: Colors.white,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BottomNavigation()));
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text(
+                                  'Please Enter the Exact Name Of The Person')));
+                        },
+                        child: Text("What Was The Issue?"),
+                      ),
+                    )
+                  ],
                 ),
               )
             : Column(children: [
@@ -96,7 +116,7 @@ class _SearchScreenState extends State<SearchScreen>
                               style: TextStyle(fontSize: 20),
                               decoration: InputDecoration(
                                 hintStyle: TextStyle(fontSize: 20),
-                                hintText: "Search",
+                                hintText: "Search Names",
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Colors.blue,
@@ -156,3 +176,4 @@ class _SearchScreenState extends State<SearchScreen>
               ]));
   }
 }
+
