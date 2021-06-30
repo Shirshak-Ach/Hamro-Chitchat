@@ -19,13 +19,33 @@ class _HomeScreenState extends State<HomeScreen> {
   Map<String, dynamic> map;
 
   String chatRoomId(String user1, String user2) {
-    if (user1[0].toLowerCase().codeUnits[0] >
-        user2.toLowerCase().codeUnits[0]) {
+    if (user1.toLowerCase().codeUnits[0] > user2.toLowerCase().codeUnits[0]) {
       return "$user1$user2";
-    } else {
+    } else if (user1.toLowerCase().codeUnits[0] <
+        user2.toLowerCase().codeUnits[0]) {
       return "$user2$user1";
     }
+    if (user1.toLowerCase().codeUnits[0] == user2.toLowerCase().codeUnits[0] &&
+        user1.toLowerCase().codeUnits[1] > user2.toLowerCase().codeUnits[1]) {
+      return "$user1$user2";
+    } else if (user1.toLowerCase().codeUnits[0] ==
+            user2.toLowerCase().codeUnits[0] &&
+        user1.toLowerCase().codeUnits[1] < user2.toLowerCase().codeUnits[1]) {
+      return "$user2$user1";
+    } else if (user1.toLowerCase().codeUnits[0] ==
+            user2.toLowerCase().codeUnits[0] &&
+        user1.toLowerCase().codeUnits[1] == user2.toLowerCase().codeUnits[1] &&
+        user1.toLowerCase().codeUnits[2] > user2.toLowerCase().codeUnits[2]) {
+      return "$user1$user2";
+    } else if (user1.toLowerCase().codeUnits[0] ==
+            user2.toLowerCase().codeUnits[0] &&
+        user1.toLowerCase().codeUnits[1] == user2.toLowerCase().codeUnits[1] &&
+        user1.toLowerCase().codeUnits[2] > user2.toLowerCase().codeUnits[2]) {
+      return "$user2$user1";
+    } else
+      return "$user1$user2";
   }
+
 
   Future<void> getDataforChat(int index) async {
     if (await _firestore
